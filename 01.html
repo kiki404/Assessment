@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <script type="text/javascript">
+        function quChong(array){
+            for (var i=0;i<array.length;i++){
+                for (var j=i+1;j<array.length;j++){
+                    if (array[i]==array[j]){
+                        array.splice(j,1);
+                        j--;
+                    }
+                    
+                }
+            }
+        }
+        function paiXu(array){
+            if (typeof array[0]=="number"){
+                array.sort(function(a,b){
+                    return a-b;
+                })
+            }
+            else {
+                array.sort();
+            }
+        }
+        window.onload=function(){
+            var input = document.getElementById("input");
+            var btn = document.getElementById("btn");
+            var output = document.getElementById("output");
+
+            btn.onclick = function(){
+                var dataArray = input.value.split("");
+                quChong(dataArray);
+                paiXu(dataArray);
+                output.value=dataArray.join();
+            }
+        }
+    </script>
+    
+
+    <style>
+        .solution{
+            width:380px;
+            line-height: 25px;
+            margin: 50px auto;
+            padding:10px;
+            border: solid black 1px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="solution">
+        <p>请输入一组数字:</p>
+        <input type="text" id="input">
+        <button id="btn">求解</button>
+        <input type="text" id="output">
+    </div>
+</body>
+</html>
